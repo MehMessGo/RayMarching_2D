@@ -1,34 +1,5 @@
 let context = canvas.getContext('2d');
 
-function drawRectangle(x, y, width, height, color = 'black', borderWidth = 0, borderColor = 'transparent'){
-    context.fillStyle = color;
-    context.fillRect(x, y, width, height);
-    context.lineWidth = borderWidth;
-    context.strokeStyle = borderColor;
-    context.strokeRect(x, y, width, height);
-}
-
-
-function drawCircle(x, y, radius, color = 'black', borderWidth = 0, borderColor = 'transparent'){
-    context.beginPath();
-    context.arc(x, y, radius, 0, 2 * Math.PI);
-    context.fillStyle = color;
-    context.fill();
-    context.lineWidth = borderWidth;
-    context.strokeStyle = borderColor;
-    context.stroke();
-}
-
-
-function drawLine(startX, startY, endX, endY, width = 1, color = 'black'){
-    context.beginPath();
-    context.moveTo(startX, startY);
-    context.lineTo(endX, endY);
-    context.lineWidth = width;
-    context.strokeStyle = color;
-    context.stroke();
-}
-
 function updateMousePosition(event) {
     let rect = canvas.getBoundingClientRect();
     context.canvas.mousePosition = {
@@ -36,6 +7,7 @@ function updateMousePosition(event) {
       y: event.clientY - rect.top
     };
 }
+
 
 function drawScene(){
     drawRectangle(
@@ -56,10 +28,12 @@ function drawScene(){
     );
 }
 
+
 context.canvas.addEventListener('mousemove', function(event){
     updateMousePosition(event);
     drawScene();
 });
+
 
 context.canvas.width  = document.body.clientWidth;
 context.canvas.height = document.body.clientHeight;
