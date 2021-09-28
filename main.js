@@ -18,6 +18,9 @@ function drawCircle(x, y, radius, color = 'black', borderWidth = 0, borderColor 
 
 let context = canvas.getContext('2d');
 
+context.canvas.width  = document.body.clientWidth;
+context.canvas.height = document.body.clientHeight;
+
 drawRectangle(
     x = 0, y = 0, 
     width = context.canvas.width, height = context.canvas.height,
