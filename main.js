@@ -1,3 +1,7 @@
+let context = canvas.getContext('2d');
+context.canvas.width  = document.body.clientWidth;
+context.canvas.height = document.body.clientHeight;
+
 function drawScene(){
     drawRectangle(
         x = 0, y = 0, 
