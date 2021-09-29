@@ -27,6 +27,17 @@ function drawScene(){
         width = 2,
         color = '#909cac'
     );
+    
+    drawCircle(
+        x = context.canvas.width / 2, y = context.canvas.height / 2,
+        radius = nearest_distance_from_point({
+                x: context.canvas.width / 2, 
+                y: context.canvas.height / 2
+            }),
+        color = 'transparent',
+        borderWidth = 3,
+        borderColor = '#cec3c8'
+    );
 }
 
 context.canvas.addEventListener('mousemove', function(event){
