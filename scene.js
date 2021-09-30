@@ -9,22 +9,22 @@ function createScene(){
     }
 }
 
-function get_distance_between(point, figure){
+function getDistanceBetween(point, figure){
     if (figure.type == 'circle'){
         return Math.sqrt((figure.x - point.x)**2 + (figure.y - point.y)**2) - figure.radius;
     }
 }
 
-function nearest_distance_from_point(point){
-    nearest_distance = context.canvas.width + context.canvas.height;
+function nearestDistanceFromPoint(point){
+    nearestDistance = context.canvas.width + context.canvas.height;
 
     scene.forEach(figure => {
-        current_distance = get_distance_between(point, figure);
-        if (current_distance < nearest_distance)
-            nearest_distance = current_distance;
+        currentDistance = getDistanceBetween(point, figure);
+        if (currentDistance < nearestDistance)
+            nearestDistance = currentDistance;
     });
 
-    return nearest_distance;
+    return nearestDistance;
 }
 
 let scene = []

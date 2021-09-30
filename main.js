@@ -27,7 +27,7 @@ function drawScene(){
     )
 }
 
-function vector_normalization(vector){
+function vectorNormalization(vector){
     let length = Math.sqrt(vector.x*vector.x + vector.y*vector.y)
 
     return {
@@ -37,7 +37,7 @@ function vector_normalization(vector){
 }
 
 function raymarch(point, direction){
-    direction = vector_normalization(direction);
+    direction = vectorNormalization(direction);
     startPoint = point;
 
     for (let index = 0; index < 30; index++) {
@@ -49,7 +49,7 @@ function raymarch(point, direction){
         );
 
         // Поиск ближайшего расстояния для этой точки
-        nearest_distance = nearest_distance_from_point(point);
+        nearest_distance = nearestDistanceFromPoint(point);
 
         // Отрисовка окружности, 
         // показывающей расстояние от точки до ближайшего объекта
