@@ -21,6 +21,12 @@ function getDistanceBetween(point, figure){
     if (figure.type == 'circle'){
         return Math.sqrt((figure.x - point.x)**2 + (figure.y - point.y)**2) - figure.radius;
     }
+    if (figure.type == 'rectangle'){ 
+        return Math.max (
+            Math.abs(point.x - figure.x - figure.sizeX/2) - figure.sizeX/2,
+            Math.abs(point.y - figure.y - figure.sizeY/2) - figure.sizeY/2
+        );
+    }
 }
 
 function nearestDistanceFromPoint(point){
