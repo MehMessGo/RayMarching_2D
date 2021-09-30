@@ -1,1 +1,6 @@
-# ray-marching
+# Ray marching
+https://mehmessgo.github.io/ray-marching/
+
+Ray marching - Один из способов нахождения пересечения луча и объекта. Каждый шаг ищется расстояние от начальной точки до ближайшего объекта с помощью SDF(https://en.wikipedia.org/wiki/Signed_distance_function), после чего откладывается новая точка на это расстояние вдоль выбранного направления.
+
+Формулы для полей расстояния: https://iquilezles.org/www/articles/distfunctions2d/distfunctions2d.htm
