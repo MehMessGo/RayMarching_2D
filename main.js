@@ -1,6 +1,6 @@
 function drawScene(){
     drawRectangle(
-        x = 0, y = 0, 
+        {x: 0, y: 0}, 
         width = context.canvas.width, height = context.canvas.height,
         color = '#ecdab9'
     );
@@ -8,7 +8,7 @@ function drawScene(){
     scene.forEach(figure => {
         if (figure.type == 'circle'){
             drawCircle(
-                x = figure.x, y = figure.y,
+                {x: figure.x, y: figure.y},
                 radius = figure.radius,
                 color = '#a47053'
             );
@@ -43,7 +43,7 @@ function raymarch(point, direction){
     for (let index = 0; index < 30; index++) {
         // Отрисовка точки, для которой ищется ближайшее расстояние
         drawCircle(
-            x = point.x, y = point.y,
+            position = point,
             radius = 4,
             color = 'black',
         );
@@ -54,7 +54,7 @@ function raymarch(point, direction){
         // Отрисовка окружности, 
         // показывающей расстояние от точки до ближайшего объекта
         drawCircle(
-            x = point.x, y = point.y,
+            position = point,
             radius = nearest_distance,
             color = 'transparent',
             borderWidth = 3,
@@ -77,8 +77,8 @@ function raymarch(point, direction){
 
     // Отрисовка линни от начальной точки, до конечной
     drawLine(
-        startX = startPoint.x, startY = startPoint.y, 
-        endX =  point.x, endY =  point.y,
+        startPosition = startPoint, 
+        endPosition =  point,
         width = 2,
         color = '#909cac'
     );
