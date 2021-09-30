@@ -13,6 +13,13 @@ function drawScene(){
                 color = '#a47053'
             );
         }
+        if (figure.type == 'rectangle'){
+            drawRectangle(
+                {x: figure.x, y: figure.y},
+                width = figure.sizeX, height = figure.sizeY,
+                color = '#a47053'
+            );
+        }
     });
 
     raymarch(
