@@ -9,15 +9,17 @@ function drawRectangle(x, y, width, height, color = 'black', borderWidth = 0, bo
 
 
 function drawCircle(x, y, radius, color = 'black', borderWidth = 0, borderColor = 'transparent'){
-    context.beginPath();
+    if (radius > 0) {
+        context.beginPath();
 
-    context.arc(x, y, radius, 0, 2 * Math.PI);
-    context.fillStyle = color;
-    context.fill();
+        context.arc(x, y, radius, 0, 2 * Math.PI);
+        context.fillStyle = color;
+        context.fill();
 
-    context.lineWidth = borderWidth;
-    context.strokeStyle = borderColor;
-    context.stroke();
+        context.lineWidth = borderWidth;
+        context.strokeStyle = borderColor;
+        context.stroke();
+    }
 }
 
 
