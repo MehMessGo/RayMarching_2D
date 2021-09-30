@@ -1,10 +1,18 @@
 function createScene(){
-    for (let i = 0; i < Math.floor(Math.random() * 20 + 5); i++) {
+    for (let i = 0; i < 10; i++) {
         scene.push({
             type: 'circle',
             x: Math.random()*context.canvas.width,
             y: Math.random()*context.canvas.height,
             radius: Math.random()*35+5,   
+        })
+
+        scene.push({
+            type: 'rectangle',
+            x: Math.random()*context.canvas.width,
+            y: Math.random()*context.canvas.height,
+            sizeX: Math.random()*35+5,
+            sizeY: Math.random()*35+5,
         })
     }
 }
