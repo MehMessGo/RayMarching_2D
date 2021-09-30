@@ -15,28 +15,72 @@ function drawScene(){
         }
     });
 
-    drawCircle(
-        x = context.canvas.width / 2, y = context.canvas.height / 2,
-        radius = 20.5,
-        color = '#a47053'
-    );
+    raymarch(
+        {
+            x: context.canvas.width / 2,
+            y: context.canvas.height / 2
+        },
+        {
+            x: context.canvas.mousePosition.x - context.canvas.width / 2,
+            y: context.canvas.mousePosition.y - context.canvas.height / 2
+        }
+    )
+}
 
+function vector_normalization(vector){
+    let length = Math.sqrt(vector.x*vector.x + vector.y*vector.y)
+
+    return {
+        x: vector.x / length,
+        y: vector.y / length,
+    }
+}
+
+function raymarch(point, direction){
+    direction = vector_normalization(direction);
+    startPoint = point;
+
+    for (let index = 0; index < 30; index++) {
+        // Отрисовка точки, для которой ищется ближайшее расстояние
+        drawCircle(
+            x = point.x, y = point.y,
+            radius = 4,
+            color = 'black',
+        );
+
+        // Поиск ближайшего расстояния для этой точки
+        nearest_distance = nearest_distance_from_point(point);
+
+        // Отрисовка окружности, 
+        // показывающей расстояние от точки до ближайшего объекта
+        drawCircle(
+            x = point.x, y = point.y,
+            radius = nearest_distance,
+            color = 'transparent',
+            borderWidth = 3,
+            borderColor = '#cec3c8'
+        );
+
+        // Откладывание новой точки, 
+        // вдоль направление на полученное расстояние (до ближайшего объекта)
+        point = {
+            x: point.x + direction.x*nearest_distance,
+            y: point.y + direction.y*nearest_distance,
+        }
+
+        // Если луч вышел за границы экрана остановить raymarching
+        if (point.x > context.canvas.width || point.x < 0 ||
+            point.y > context.canvas.height || point.y < 0){
+                break;
+        }
+    }
+
+    // Отрисовка линни от начальной точки, до конечной
     drawLine(
-        startX = context.canvas.width / 2, startY = context.canvas.height / 2, 
-        endX =  context.canvas.mousePosition.x, endY =  context.canvas.mousePosition.y,
+        startX = startPoint.x, startY = startPoint.y, 
+        endX =  point.x, endY =  point.y,
         width = 2,
         color = '#909cac'
-    );
-    
-    drawCircle(
-        x = context.canvas.width / 2, y = context.canvas.height / 2,
-        radius = nearest_distance_from_point({
-                x: context.canvas.width / 2, 
-                y: context.canvas.height / 2
-            }),
-        color = 'transparent',
-        borderWidth = 3,
-        borderColor = '#cec3c8'
     );
 }
 
