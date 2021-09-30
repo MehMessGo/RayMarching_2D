@@ -22,10 +22,11 @@ function getDistanceBetween(point, figure){
         return Math.sqrt((figure.x - point.x)**2 + (figure.y - point.y)**2) - figure.radius;
     }
     if (figure.type == 'rectangle'){ 
-        return Math.max (
-            Math.abs(point.x - figure.x - figure.sizeX/2) - figure.sizeX/2,
-            Math.abs(point.y - figure.y - figure.sizeY/2) - figure.sizeY/2
-        );
+        let d = {
+            x: Math.abs(point.x - figure.x - figure.sizeX/2) - figure.sizeX/2,
+            y: Math.abs(point.y - figure.y - figure.sizeY/2) - figure.sizeY/2
+        };
+        return Math.sqrt(Math.max(d.x, 0)**2 + Math.max(d.y, 0)**2) + Math.min(Math.max(d.x, d.y), 0);
     }
 }
 
